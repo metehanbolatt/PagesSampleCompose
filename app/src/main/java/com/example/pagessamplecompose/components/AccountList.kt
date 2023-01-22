@@ -13,7 +13,7 @@ import com.example.pagessamplecompose.ui.theme.ExtraLightGray
 @Composable
 fun AccountList(
     accountList: List<AccountModel>,
-    onAccountClicked: (AccountModel) -> Unit
+    onAccountClicked: ((AccountModel) -> Unit)? = null
 ) {
     val listState = rememberLazyListState()
     LazyColumn(

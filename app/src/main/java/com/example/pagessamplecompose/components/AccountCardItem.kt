@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -29,14 +30,14 @@ import com.example.pagessamplecompose.data.accountList
 @Composable
 fun AccountCardItem(
     accountModel: AccountModel,
-    onAccountClicked: (AccountModel) -> Unit
+    onAccountClicked: ((AccountModel) -> Unit)? = null
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(115.dp)
             .padding(bottom = 1.dp)
-            .clickable { onAccountClicked(accountModel) },
+            .clickable { onAccountClicked?.invoke(accountModel) },
         shape = RoundedCornerShape(0.dp)
     ) {
         Row(modifier = Modifier.padding(10.dp)) {
@@ -63,8 +64,8 @@ fun AccountCardItem(
                 Text(text = accountModel.availableBalance, fontWeight = FontWeight.Bold, fontSize = 16.sp)
             }
             Box(
-                modifier = Modifier.fillMaxHeight().weight(1f),
-                contentAlignment = Alignment.Center
+                modifier = Modifier.fillMaxSize().weight(1f),
+                contentAlignment = Alignment.CenterEnd
             ) {
                 Image(
                     imageVector = Icons.Default.KeyboardArrowRight,
