@@ -29,14 +29,14 @@ import com.example.pagessamplecompose.data.accountList
 @Composable
 fun AccountCardItem(
     accountModel: AccountModel,
-    cardClickable: () -> Unit
+    onAccountClicked: (AccountModel) -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(115.dp)
             .padding(bottom = 1.dp)
-            .clickable { cardClickable() },
+            .clickable { onAccountClicked(accountModel) },
         shape = RoundedCornerShape(0.dp)
     ) {
         Row(modifier = Modifier.padding(10.dp)) {
