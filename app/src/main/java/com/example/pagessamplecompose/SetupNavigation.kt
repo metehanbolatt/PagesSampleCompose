@@ -22,7 +22,10 @@ fun SetupNavigation(navController: NavHostController) {
             Screen.UserInformationPage.route + "/{accountNo}",
             arguments = listOf(navArgument("accountNo") { type = NavType.StringType })
         ) {
-            UserInformationPage(accountNo = it.arguments?.getString("accountNo") ?: "")
+            UserInformationPage(
+                navController = navController,
+                accountNo = it.arguments?.getString("accountNo") ?: ""
+            )
         }
     }
 }
